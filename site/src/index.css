@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-950 text-silver-100 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Consistent, accessible focus ring across interactive elements. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink-950 rounded-sm;
+  }
+
+  ::selection {
+    background-color: rgba(0, 129, 253, 0.32);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-silver-50;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Page width container with generous, calm gutters. */
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Hairline divider in brand silver at low opacity. */
+  .hairline {
+    @apply border-white/[0.07];
+  }
+
+  /* Subtle premium card surface. */
+  .surface {
+    @apply rounded-2xl border border-white/[0.07] bg-ink-900/70 shadow-card backdrop-blur-sm;
+  }
+
+  /* Small uppercase eyebrow label. */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent-400;
+  }
+
+  /* Long-form content (legal pages, about, policies). Dependency-free
+     alternative to @tailwindcss/typography, tuned for the dark theme. */
+  .prose-mv {
+    @apply text-silver-300;
+  }
+  .prose-mv > * + * {
+    @apply mt-4;
+  }
+  .prose-mv h2 {
+    @apply mt-10 text-xl font-bold text-silver-50;
+  }
+  .prose-mv h3 {
+    @apply mt-8 text-lg font-semibold text-silver-100;
+  }
+  .prose-mv p,
+  .prose-mv li {
+    @apply leading-relaxed;
+  }
+  .prose-mv a {
+    @apply text-accent-300 underline underline-offset-2 hover:text-accent-200;
+  }
+  .prose-mv ul {
+    @apply list-disc space-y-2 pl-6 marker:text-silver-600;
+  }
+  .prose-mv ol {
+    @apply list-decimal space-y-2 pl-6 marker:text-silver-500;
+  }
+  .prose-mv strong {
+    @apply font-semibold text-silver-100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

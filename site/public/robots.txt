@@ -1,0 +1,9 @@
+# Default robots.txt (development). The production build regenerates this file
+# in dist/ with the correct origin and Sitemap line (see scripts/generate-sitemap.mjs).
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /cart
+Disallow: /checkout
+
+Sitemap: https://www.meridianvapes.co.uk/sitemap.xml

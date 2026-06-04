@@ -1,0 +1,48 @@
+import type { ProductImage } from './types'
+
+/** Square product imagery — width/height match downloaded pack shots. */
+const SIZE = 800
+
+/**
+ * Local pack-shot paths under /public/products (see scripts/download-product-images.mjs).
+ * Keys must match product `slug` values.
+ */
+const SRC_BY_SLUG: Record<string, string> = {
+  'vaporesso-xros-5-pod-kit': '/products/vaporesso-xros-5-pod-kit.png',
+  'oxva-xlim-pro-2-pod-kit': '/products/oxva-xlim-pro-2-pod-kit.jpg',
+  'uwell-caliburn-g3-pod-kit': '/products/uwell-caliburn-g3-pod-kit.jpg',
+  'aspire-flexus-q-pod-kit': '/products/aspire-flexus-q-pod-kit.jpg',
+  'ivg-pro-rainbow-burst-vape-kit': '/products/ivg-pro-rainbow-burst-vape-kit.png',
+  'ivg-pro-blue-raspberry-ice-vape-kit': '/products/ivg-pro-blue-raspberry-ice-vape-kit.jpg',
+  'ivg-pro-fresh-mint-vape-kit': '/products/ivg-pro-fresh-mint-vape-kit.png',
+  'strawberry-nic-salt-10ml': '/products/strawberry-nic-salt-10ml.jpg',
+  'menthol-nic-salt-10ml': '/products/menthol-nic-salt-10ml.jpg',
+  'vanilla-custard-50ml-shortfill': '/products/vanilla-custard-50ml-shortfill.webp',
+  'mixed-berries-nic-salt-10ml': '/products/mixed-berries-nic-salt-10ml.jpg',
+  'vaporesso-xros-replacement-pods-2-pack': '/products/vaporesso-xros-replacement-pods-2-pack.webp',
+  'mesh-coils-0-6ohm-5-pack': '/products/mesh-coils-0-6ohm-5-pack.jpg',
+  'nic-shot-18mg-10ml': '/products/nic-shot-18mg-10ml.jpg',
+  'nic-shot-18mg-70vg-10ml': '/products/nic-shot-18mg-70vg-10ml.jpg',
+  'usb-c-charging-cable': '/products/usb-c-charging-cable.jpg',
+  '18650-battery-charger': '/products/18650-battery-charger.jpg',
+  'vaporesso-xros-4-mini-pod-kit': '/products/vaporesso-xros-4-mini-pod-kit.jpg',
+  'oxva-xlim-se-2-pod-kit': '/products/oxva-xlim-se-2-pod-kit.jpg',
+  'ivg-pro-lemon-lime-vape-kit': '/products/ivg-pro-lemon-lime-vape-kit.jpg',
+  'ivg-pro-strawberry-watermelon-vape-kit':
+    '/products/ivg-pro-strawberry-watermelon-vape-kit.jpg',
+  'blueberry-nic-salt-10ml': '/products/blueberry-nic-salt-10ml.jpg',
+  'tobacco-nic-salt-10ml': '/products/tobacco-nic-salt-10ml.jpg',
+  'lemon-lime-nic-salt-10ml': '/products/lemon-lime-nic-salt-10ml.jpg',
+  'mango-ice-50ml-shortfill': '/products/mango-ice-50ml-shortfill.jpg',
+  'oxva-xlim-replacement-pods-3-pack': '/products/oxva-xlim-replacement-pods-3-pack.jpg',
+  'uwell-caliburn-g4-pods-2-pack': '/products/uwell-caliburn-g4-pods-2-pack.jpg',
+  'aspire-flexus-af-mesh-coils-5-pack': '/products/aspire-flexus-af-mesh-coils-5-pack.jpg',
+  'nic-shot-salt-20mg-10ml': '/products/nic-shot-salt-20mg-10ml.jpg',
+  'usb-c-charging-cable-1m': '/products/usb-c-charging-cable-1m.jpg',
+}
+
+export function productImages(slug: string, alt: string): ProductImage[] {
+  const src = SRC_BY_SLUG[slug]
+  if (!src) return []
+  return [{ src, alt, width: SIZE, height: SIZE }]
+}

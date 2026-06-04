@@ -1,0 +1,27 @@
+# Normalise line endings. The deploy target is Linux, so all text files are
+# stored and checked out with LF. This is essential for the shell scripts:
+# CRLF would break the shebang and the scripts would not run on the VPS.
+* text=auto eol=lf
+
+*.sh        text eol=lf
+*.py        text eol=lf
+*.service   text eol=lf
+*.conf      text eol=lf
+*.md        text eol=lf
+*.json      text eol=lf
+*.txt       text eol=lf
+*.ini       text eol=lf
+*.ts        text eol=lf
+*.tsx       text eol=lf
+
+# Binary assets: never normalise.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.ico   binary
+*.zip   binary
+*.xlsx  binary
+*.pdf   binary
+*.woff  binary
+*.woff2 binary

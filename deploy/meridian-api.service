@@ -1,0 +1,18 @@
+[Unit]
+Description=Meridian Vapes API Service
+After=network.target
+
+[Service]
+# Matches the TriPoint convention (root + venv + EnvironmentFile). The .env file
+# holds INVENTREE_URL and INVENTREE_TOKEN and is gitignored; it is NOT in the repo.
+User=root
+WorkingDirectory=/var/www/meridian/backend
+EnvironmentFile=/var/www/meridian/backend/.env
+Environment="PATH=/var/www/meridian/venv/bin:/usr/bin"
+# Meridian binds 127.0.0.1:8010 (TriPoint owns 8000). Loopback only; nginx is the
+# public edge. InvenTree is never reached from here over anything but localhost.
+ExecStart=/var/www/meridian/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8010
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
